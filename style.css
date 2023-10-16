@@ -14,34 +14,38 @@ body{
 #header{
     width: 100%;
     height: 100vh;
-    background-image: url(./assert/background.png);
+    background-image: url(./assert/girl-img.jpeg);
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
 }
 .container{
     padding: 10px 10%;
 }
-nav{
+.header-navbar{
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content:space-between ;
     flex-wrap: wrap;
+    background-color: #262626;
+    padding: 10px 10%;
 }
-.logo{
-    width: 140px;
+.header-navbar img{
+    width: 8rem;
 }
-nav ul li{
+.header-navbar ul li{
     display: inline-block;
     list-style: none;
     margin: 10px 20px;
 }
-nav ul li a{
+.header-navbar ul li a{
     color: #fff;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 1.3rem;
     position: relative;
 }
-nav ul li a::after{
+.header-navbar ul li a::after{
     content: '';
     width: 0;
     height: 3px;
@@ -51,33 +55,36 @@ nav ul li a::after{
     bottom: -6px;
     transition: 0.5s;
 }
-nav ul li a:hover::after{
+.header-navbar ul li a:hover::after{
     width: 100%;
 }
-.header-text{
-    margin-top: 20%;
+.header-navbar-text{
+    margin-top: 15rem;
+    padding: 0px 10%;
+}
+.header-navbar-text p{
     font-size: 30px;
 }
-.header-text h1{
-    font-size: 60px;
+.header-navbar-text h1{
+    font-size: 4rem;
     margin-top: 20px;
 }
-.header-text h1 span{
+.header-navbar-text h1 span{
     color: #ff004f;
 }
 #about{
     padding: 80px 0px;
     color: #ababab;
 }
-.row{
+.about-row{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
-.about-col-1{
+.about-row-img{
     flex-basis: 35%;
 }
-.about-col-1 img{
+.about-row-img img{
     width: 100%;
     border-radius: 15px;
 }
@@ -220,7 +227,6 @@ nav ul li a:hover::after{
     text-align: center;
 }
 .work:hover img{
-    /* zoom in */
     transform: scale(1.1);   
 }
 .work:hover .layer{
@@ -235,10 +241,13 @@ nav ul li a:hover::after{
     border-radius: 6px;
     text-decoration: none;
     color: #fff;
-    transform: 0.5s;
+    transition: 0.5s;
 }
 .btn:hover{
     background-color: #ff004f;
+}
+.contact-row{
+    display: flex;
 }
 .contact-left{
     width: 35%;
@@ -304,29 +313,86 @@ form .btn2{
 .copyright i{
     color: #ff004f;
 }
-nav .fa-solid{
+.header-navbar .fa-solid{
     display: none;
 }
+#submit-msg{
+    color: #61b752;
+    margin-top: -40px;
+    display: block;
+}
+@media only screen and (max-width:950px){
+    .header-navbar img{
+        width: 8rem;
+    }
+    .header-navbar ul li{
+        margin: 10px 10px;
+    }
+    .header-navbar ul li a{
+        font-size: 1rem;
+    }
+    
+}
+@media only screen and (max-width:800px){
+    .about-row-img {
+        display: flex;
+    }
+    .contact-left, .contact-right{
+        text-align: center;
+        width: 100%;
+    }
+    .contact-row{
+        flex-direction: column;
+    }   
+}
+@media only screen and (max-width:770px){
+    .header-navbar-text{
+        margin-top: 20rem;
+    }
+    .header-navbar-text h1{
+        font-size: 3rem;
+    }
+    .header-navbar img{
+        width: 6rem;
+    }
+    .header-navbar ul li{
+        margin: 10px 10px;
+    }
+    .header-navbar ul li a{
+        font-size: .95rem;
+    }
+}
+@media only screen and (max-width:730px){
+    .about-row-img , .about-col-2{
+        flex-basis: 100%;
+    }
+    .about-row-img{
+        margin-bottom: 30px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .about-row-img img{
+        width: 70%;
+    }
+}
 @media only screen and (max-width:600px){
-    .header{
-        background-image: url(./assert/phone-background.png);
-
+    .header-navbar-text{
+        font-size: 1rem;
+        margin-top: 20rem;
     }
-    .header-text{
-        margin-top: 75%;
-        font-size: 16px;
-    }
-    .header-text h1{
+    .header-navbar-text h1{
         font-size: 30px;
     }
-    nav img{
-        width: 50%;
+    .header-navbar img{
+        width: 30%;
     }
-    nav .fa-solid{
+    .header-navbar .fa-solid{
         display: block;
         font-size: 25px;
     }
-    nav ul{
+    .header-navbar ul{
         background: #ff004f;
         position: fixed;
         top: 0;
@@ -337,11 +403,11 @@ nav .fa-solid{
         z-index: 2;
         transition: right 0.5s;
     }
-    nav ul li{
+    .header-navbar ul li{
         display: block;
         margin: 25px;
     }
-    nav ul .fa-solid{
+    .header-navbar ul .fa-solid{
         position: absolute;
         top: 25px;
         left: 25px;
@@ -350,19 +416,29 @@ nav .fa-solid{
     .sub-title{
         font-size: 40px;
     }
-    .about-col-1 , .about-col-2{
+    .about-row-img , .about-col-2{
         flex-basis: 100%;
     }
-    .about-col-1{
+    .about-row-img{
         margin-bottom: 30px;
     }
     .about-col-2{
         font-size: 15px;
     }
     .contact-left, .contact-right{
-        flex-basis: 100%;
+        width: 100%;
+        text-align: center;
     }
     .copyright{
         font-size: 14px;
+    }
+    .contact-row{
+        flex-direction: column;
+        align-items: center;
+    }
+}
+@media only screen and (max-width:450px){
+    html{
+        width: 100vh;
     }
 }

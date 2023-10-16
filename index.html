@@ -8,9 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
 </head>
 <body>
-    <div id="header">
-        <div class="container">
-            <nav>
+    <div id="header" class="header">
+            <nav class="header-navbar">
                 <img src="./assert/logo.png" alt="logo">
                 <ul id="sidemenu">
                     <li><a href="#header">Home</a></li>
@@ -22,19 +21,18 @@
                 </ul>
                 <i class="fa-solid fa-bars" onclick="openmenu()"></i>
             </nav>
-            <div class="header-text">
+            <div class="header-navbar-text">
                 <p>UI/UX Designer</p>
-                <h1>Hi, I'm <span>Kevin</span><br>Jen From Australia</h1>
+                <h1>Hi, I'm <span>Kevin</span><br>Celina  From Australia</h1>
             </div>
-        </div>
     </div>
 
 
     <div id="about">
         <div class="container">
-            <div class="row">
-                <div class="about-col-1">
-                    <img src="./assert/user.png" alt="">
+            <div class="about-row">
+                <div class="about-row-img">
+                    <img src="./assert/girl.jpeg" alt="">
                 </div>
                 <div class="about-col-2">
                     <h1 class="sub-title">About Me</h1>
@@ -135,7 +133,7 @@
 
     <div id="contact">
         <div class="container">
-            <div class="row">
+            <div class="contact-row">
                 <div class="contact-left">
                     <h1 class="sub-title">Contact Me</h1>
                     <p><i class="fa-solid fa-paper-plane"></i>contact@exapmle</p>
@@ -149,12 +147,13 @@
                     <a href="./Pink Black & White Minimalist Photo High School Resume .pdf" download="" class="btn btn2">Download CV</a>
                 </div>
                 <div class="contact-right">
-                    <form action="">
+                    <form action="" name="submit-to-google-sheet">
                         <input type="text" name="name" placeholder="Your Name" required>
                         <input type="email" name="email" placeholder="Your Email" required>
                         <textarea name="message"  rows="6" placeholder="Your Message"></textarea>
                         <button type="submit" class="btn btn2">Submit</button>
                     </form>
+                    <span id="submit-msg"></span>
                 </div>
             </div>
         </div>
@@ -186,5 +185,24 @@
             sidemnu.style.right="-200px";
         }
     </script>
+      <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyK_zSRPQSIQ7jZf26OObEc9cThraT27V4sh_UKNe7NiHeAaBRBLMRrYVvXq5IrnDQT/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg=document.getElementById("submit-msg")
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML="Message sent successfully"
+                alert("Thank you for filling the form")
+                setTimeout(function(){
+                    msg.innerHTML=""
+                },5000) 
+                form.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
 </body>
 </html>
